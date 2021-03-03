@@ -2,6 +2,7 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"io"
 	"os"
@@ -10,10 +11,19 @@ import (
 )
 
 func main() {
-	exeFilePath := "C:/Users/むずでょ/go/src/github.com/muzudho/go-echo-next-char/go-echo-next-char.exe"
+	// コマンドライン引数登録
+	exePath := flag.String("exe", "", "Working directory path.")
+	// 解析
+	flag.Parse()
+
+	if *exePath == "" {
+		panic(fmt.Errorf("--exe <Executable file path>"))
+	}
+
+	// exePath := "C:/Users/むずでょ/go/src/github.com/muzudho/go-echo-next-char/go-echo-next-char.exe"
 	parameters := strings.Split("", " ")
 
-	cmd := exec.Command(exeFilePath, parameters...)
+	cmd := exec.Command(*exePath, parameters...)
 
 	stdin, err := cmd.StdinPipe()
 	if err != nil {

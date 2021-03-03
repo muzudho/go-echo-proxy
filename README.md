@@ -11,5 +11,10 @@ go build
 ## Run
 
 ```shell
-go-echo-proxy
+go-echo-proxy --exe <ExecutableFilePath>
+# Example
+#
+# ```shell
+# go-echo-proxy --exe C:/Users/むずでょ/go/src/github.com/muzudho/go-echo-next-char/go-echo-next-char.exe
+# ```
 ```
